@@ -5,18 +5,22 @@ library(plotrix) # pie chart
 L <- readLines("titanic.csv", n = 1) 
 if (grepl(",", L)) print("English format")
 
-df <- read.csv("titanic.csv")
+
+df <- read.csv("~/Desktop/titanic.csv", header=TRUE, encoding = "UTF-8")
 head(df)
+
 
 #Mirando los nombres de columnas del dataframe y despues los tipos de variables estadisticas
 colnames(df)
 sapply(df,class)
 str(df)
-summary(df)
+summary(df) 
+
+levels(df$AGE)[levels(df$AGE)=="Ni�o"] <- "Niño"
 
 
 not_adult <- df[!(df$AGE == "Adulto"), ]
-
+not_adult
 
 
 sexo <- table(df$SEX)
