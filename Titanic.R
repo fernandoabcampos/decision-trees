@@ -16,6 +16,7 @@ sapply(df,class)
 str(df)
 summary(df) 
 
+#Eliminando caracteres com problemas
 levels(df$AGE)[levels(df$AGE)=="Ni�o"] <- "Niño"
 
 
