@@ -19,4 +19,16 @@ summary(model_titanic)
 
 # MOSTRAR EL ARBOL OBTENIDO
 plot(model_titanic)
-estimated_ytest <- predict(model, xtest, type="class")
+
+
+estimated_ytest <- predict(model_titanic, xtest, type="class")
+accuracy <- sum(ytest==estimated_ytest)/length(ytest)
+error <- 1- accuracy
+print(accuracy)
+print(error)
+
+# Mirando las reglas del modelo
+mod <- C50::C5.0(ytrain ~ ., data = xtrain, rules = TRUE)
+summary(mod)
+cat(mod$rules)
+
